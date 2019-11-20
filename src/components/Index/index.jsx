@@ -20,7 +20,7 @@ class Index extends Component {
   async getdata(refThis) {
     request.post(
       {
-        url: "http://127.0.0.1:5000/index",
+        url: "https://thawing-eyrie-73297.herokuapp.com/index",
         headers: {
           "content-type": "application/json"
         },

@@ -13,7 +13,7 @@ class Search extends Component {
     var refThis = this;
     request.get(
       {
-        url: "http://127.0.0.1:5000/getallwords",
+        url: "https://thawing-eyrie-73297.herokuapp.com/getallwords",
         headers: {
           "content-type": "application/json"
         }
@@ -61,7 +61,7 @@ class Search extends Component {
     const refThis = this;
     request.get(
       {
-        url: "http://127.0.0.1:5000/search",
+        url: "https://thawing-eyrie-73297.herokuapp.com/search",
         headers: {
           "content-type": "application/json"
         },

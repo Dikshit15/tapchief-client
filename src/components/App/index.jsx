@@ -12,7 +12,7 @@ class App extends Component {
   handleClick = () => {
     request.delete(
       {
-        url: "http://127.0.0.1:5000/clear",
+        url: "https://thawing-eyrie-73297.herokuapp.com/clear",
         headers: {
           "content-type": "application/json"
         }
