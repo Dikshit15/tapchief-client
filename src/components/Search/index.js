@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import request from "request";
-import { AutoComplete, Button, Card } from "antd";
+import { AutoComplete, Button } from "antd";
 import Paragraph from "../../components/Paragraph";
+import api from "../../utils/api";
+
 class Search extends Component {
   state = {
     dataSource: [],
@@ -13,7 +15,7 @@ class Search extends Component {
     var refThis = this;
     request.get(
       {
-        url: "https://thawing-eyrie-73297.herokuapp.com/getallwords",
+        url: api + "getallwords",
         headers: {
           "content-type": "application/json"
         }
@@ -61,7 +63,7 @@ class Search extends Component {
     const refThis = this;
     request.get(
       {
-        url: "https://thawing-eyrie-73297.herokuapp.com/search",
+        url: api + "search",
         headers: {
           "content-type": "application/json"
         },
@@ -87,7 +89,6 @@ class Search extends Component {
 
   render() {
     const { dataDisplayed, value } = this.state;
-    console.log(dataDisplayed);
     return (
       <React.Fragment>
         <AutoComplete
@@ -99,11 +100,10 @@ class Search extends Component {
           value={value}
         />
         <Button htmlType="submit" type="primary" onClick={this.handleClick}>
-          Search
+          Search here
         </Button>
         <br />
         <br />
-        <Paragraph paragraph={this.state.paragraphs} />
       </React.Fragment>
     );
   }

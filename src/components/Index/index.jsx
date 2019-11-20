@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Button } from "antd";
 import { Alert } from "antd";
 import request from "request";
+import api from "../../utils/api";
 
 class Index extends Component {
   state = {
@@ -20,7 +21,7 @@ class Index extends Component {
   async getdata(refThis) {
     request.post(
       {
-        url: "https://thawing-eyrie-73297.herokuapp.com/index",
+        url: api + "index",
         headers: {
           "content-type": "application/json"
         },
@@ -60,7 +61,6 @@ class Index extends Component {
         isRendering: true
       },
       () => {
-        console.log("something");
         refThis.getdata(refThis);
       }
     );
@@ -71,15 +71,15 @@ class Index extends Component {
     return (
       <React.Fragment>
         {this.state.success === true && (
-          <Alert message="Successfully indexed" type="success" />
+          <Alert message="Success" type="success" />
         )}
         {this.state.success === false && (
-          <Alert message="Not able to index data" type="error" />
+          <Alert message="Indexing failed" type="error" />
         )}
 
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="form.textarea">
-            <Form.Label>Example textarea</Form.Label>
+            <Form.Label>Enter Text</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"

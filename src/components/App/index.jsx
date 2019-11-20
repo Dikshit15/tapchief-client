@@ -4,47 +4,53 @@ import { Layout, Menu, Button } from "antd";
 import request from "request";
 import Index from "../../components/Index";
 import Search from "../../components/Search";
+import api from "../../utils/api";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 class App extends Component {
-  state = {};
-  handleClick = () => {
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
+  // state = {};
+  handleClickAction = () => {
     request.delete(
       {
-        url: "https://thawing-eyrie-73297.herokuapp.com/clear",
+        url: api + "clear",
         headers: {
           "content-type": "application/json"
         }
       },
       function(error, response, body) {
         if (error === null) {
-          console.log("Cleared");
+          alert("Cleared");
         }
       }
     );
   };
   render() {
     return (
+    <div>
       <Layout>
         <Router>
-          <Header style={{ position: "fixed", zIndex: 5, width: "100%" }}>
+          <Header style={{  zIndex: 5, width: "400%", color:"yellow" }} >
             <div className="logo" />
-
             <Menu
-              theme="dark"
-              mode="horizontal"
               defaultSelectedKeys={["1"]}
-              style={{ lineHeight: "64px" }}
+              style={{ lineHeight: "60px" }}
             >
-              <Menu.Item key="1">
-                <Link to="/">Index</Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/search">Search</Link>
-              </Menu.Item>
             </Menu>
           </Header>
+          <button>
+              <Link to="/"> Click Here for Index</Link>
+          </button>
+          <button>
+              <Link to="/search"> Click Here for Search</Link>
+          </button>
+          <Button onClick={this.handleClickAction}>
+            <b>Clear Previously Indexed Data</b>
+          </Button>
           <br />
           <br />
           <Content style={{ padding: "0 50px", marginTop: 150 }}>
@@ -58,16 +64,10 @@ class App extends Component {
                 </Route>
               </Switch>
             </div>
-            <Button type="danger" onClick={this.handleClick}>
-              Clear
-            </Button>
           </Content>
         </Router>
-
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
       </Layout>
+    </div>
     );
   }
 }
