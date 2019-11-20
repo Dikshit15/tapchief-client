@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -12,3 +13,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Simultaneously go to the server folder in your local repository and run:
 ### `flask run`
 This will start the backend server and you will be able to submit your data to be indexed,
+=======
+Tapchief
+>>>>>>> d7823140d473b002e560a5024bcf1bf804290b67
