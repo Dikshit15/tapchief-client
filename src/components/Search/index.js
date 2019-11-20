@@ -4,8 +4,8 @@ import { AutoComplete, Button, Card } from "antd";
 import Paragraph from "../../components/Paragraph";
 class Search extends Component {
   state = {
-    dataSource: null,
-    dataDisplayed: null,
+    dataSource: [],
+    dataDisplayed: [],
     value: null,
     paragraphs: null
   };
