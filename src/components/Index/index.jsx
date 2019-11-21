@@ -21,7 +21,7 @@ class Index extends Component {
   async getdata(refThis) {
     request.post(
       {
-        url: api + "index",
+        url: api + "indexData",
         headers: {
           "content-type": "application/json"
         },

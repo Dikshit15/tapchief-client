@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import request from "request";
-import { AutoComplete, Button } from "antd";
-import Paragraph from "../../components/Paragraph";
+import { AutoComplete, Button, Card } from "antd";
 import api from "../../utils/api";
 
 class Search extends Component {
@@ -9,13 +8,13 @@ class Search extends Component {
     dataSource: [],
     dataDisplayed: [],
     value: null,
-    paragraphs: null
+    paragraphs: []
   };
   componentWillMount = () => {
     var refThis = this;
     request.get(
       {
-        url: api + "getallwords",
+        url: api + "getWords",
         headers: {
           "content-type": "application/json"
         }
@@ -89,6 +88,7 @@ class Search extends Component {
 
   render() {
     const { dataDisplayed, value } = this.state;
+
     return (
       <React.Fragment>
         <AutoComplete
@@ -100,10 +100,11 @@ class Search extends Component {
           value={value}
         />
         <Button htmlType="submit" type="primary" onClick={this.handleClick}>
-          Search here
+          Search
         </Button>
         <br />
         <br />
+        {this.props.paragraph.map((item, index) => <Card>{item}</Card>)}
       </React.Fragment>
     );
   }
